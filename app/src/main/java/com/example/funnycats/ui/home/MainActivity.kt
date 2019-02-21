@@ -21,12 +21,12 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mainViewModel = MainViewModel.create(this)
-        getRandomCat(mainViewModel)
+        getRandomCat()
     }
 
     @SuppressLint("CheckResult")
-    fun getRandomCat(mainViewModel : MainViewModel) {
+    fun getRandomCat() {
+        val mainViewModel = MainViewModel.create(this)
         mainViewModel.getRandomCat().doOnSubscribe {
             compositeDisposableOnPause.add(it)
         }.observeOn(AndroidSchedulers.mainThread())
