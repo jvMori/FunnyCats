@@ -3,6 +3,7 @@ package com.example.funnycats.ui.home
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.funnycats.R
 import com.example.funnycats.data.network.response.RandomCat
 import com.squareup.picasso.Picasso
@@ -22,6 +23,9 @@ class MainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getRandomCat()
+        randomBtn.setOnClickListener {
+            getRandomCat()
+        }
     }
 
     @SuppressLint("CheckResult")
