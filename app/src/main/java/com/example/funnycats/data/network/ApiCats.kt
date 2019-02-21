@@ -9,4 +9,5 @@ interface ApiCats
 {
     @GET("images/search")
     fun getRandomCat() : Single<RandomCatResponse>
+
 }
