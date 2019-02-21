@@ -1,4 +1,4 @@
-package com.example.funnycats.ui
+package com.example.funnycats.ui.home
 
 
 import androidx.fragment.app.FragmentActivity
@@ -15,7 +15,7 @@ class MainViewModel : ViewModel()
     fun getRandomCat() : Single<RandomCat> = catsRepository.getRandomCat()
 
     companion object{
-        fun create(activity: FragmentActivity): MainViewModel{
+        fun create(activity: FragmentActivity): MainViewModel {
             var mainViewModel = ViewModelProviders.of(activity).get(MainViewModel::class.java)
             return mainViewModel
         }

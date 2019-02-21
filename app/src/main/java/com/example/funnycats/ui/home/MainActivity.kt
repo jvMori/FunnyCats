@@ -1,10 +1,10 @@
-package com.example.funnycats
+package com.example.funnycats.ui.home
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.funnycats.R
 import com.example.funnycats.data.network.response.RandomCat
-import com.example.funnycats.ui.MainViewModel
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
