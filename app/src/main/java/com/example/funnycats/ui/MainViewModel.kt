@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.example.funnycats.data.network.NetworkDataSource
-import com.example.funnycats.data.network.RandomCat
+import com.example.funnycats.data.network.response.RandomCat
 import com.example.funnycats.data.repository.CatsRepository
 import io.reactivex.Single
 

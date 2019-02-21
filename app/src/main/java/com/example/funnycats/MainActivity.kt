@@ -3,10 +3,12 @@ package com.example.funnycats
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.funnycats.data.network.response.RandomCat
 import com.example.funnycats.ui.MainViewModel
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -14,21 +16,27 @@ class MainActivity: AppCompatActivity() {
 
     private val compositeDisposableOnPause = CompositeDisposable()
 
-    @SuppressLint("CheckResult")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val mainViewModel = MainViewModel.create(this)
+        getRandomCat(mainViewModel)
+    }
+
+    @SuppressLint("CheckResult")
+    fun getRandomCat(mainViewModel : MainViewModel) {
         mainViewModel.getRandomCat().doOnSubscribe {
             compositeDisposableOnPause.add(it)
         }.observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .onErrorReturn { RandomCat(listOf(), null, null) }
             .subscribe { result ->
-                result?.let {
-                    Picasso.get().load(it.url).into(catImageView)
+                result?.url.let {
+                    Picasso.get().load(it).into(catImageView)
                 }
             }
-
     }
 
     override fun onPause() {

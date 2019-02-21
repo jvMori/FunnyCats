@@ -1,6 +1,6 @@
 package com.example.funnycats.data.network
 
-import com.example.funnycats.data.network.response.RandomCatResponse
+import com.example.funnycats.data.network.response.RandomCat
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -30,7 +30,7 @@ class NetworkDataSource{
         api =  retrofit.create(ApiCats::class.java)
     }
 
-    fun getRandomCat() : Single<RandomCatResponse>{
+    fun getRandomCat() : Single<List<RandomCat>>{
         return api.getRandomCat()
     }
 }

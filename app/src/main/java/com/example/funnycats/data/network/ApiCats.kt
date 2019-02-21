@@ -1,6 +1,6 @@
 package com.example.funnycats.data.network
 
-import com.example.funnycats.data.network.response.RandomCatResponse
+import com.example.funnycats.data.network.response.RandomCat
 import io.reactivex.Single
 import retrofit2.http.GET
 
@@ -8,6 +8,6 @@ import retrofit2.http.GET
 interface ApiCats
 {
     @GET("images/search")
-    fun getRandomCat() : Single<RandomCatResponse>
+    fun getRandomCat() : Single<List<RandomCat>>
 
 }
